@@ -1,12 +1,15 @@
-import os
-import sys
-import unittest
+import os, sys, unittest
+
+from core import test_path, module_path
+# test_path = os.path.dirname(os.path.abspath(__file__))
+# module_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 class TestSeparator(unittest.TestCase):
 
     def setUp(self):
-        self.in_path = os.path.join('image', 'input')
-        self.out_path = os.path.join("image", "output")
+        self.in_path = os.path.join(test_path, 'image', 'input')
+        self.out_path = os.path.join(test_path, "image", "output")
         out_files = self._output_files()
         ret = [os.remove(file) for file in out_files]
 
@@ -34,8 +37,6 @@ class TestSeparator(unittest.TestCase):
 
 if __name__ == '__main__':
     # set import path for environment
-    cur_path = os.path.dirname(os.path.abspath(__file__))
-    sys.path.remove(cur_path)
-    sys.path.append(os.path.dirname(cur_path))
-    from imagehandler import Separator
+    sys.path.append(os.path.join(module_path, 'imagehandler'))
+    from filehandler import Separator
     unittest.main()

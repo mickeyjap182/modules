@@ -4,26 +4,31 @@
 Overview
 
 ## Description
-image libraries 
+image libraries
 
 ## Demo
 
-## VS. 
+## VS.
 
 ## Requirement
 require following libraries.
 - opencv
 
 ## Usage
+- append module path to your system path.
+ use `sys.path.append()` or
+ add environment variable of `PYTHONPATH`
+
 - imagehandler
 
     import os
     from modules.imagehandler import Separator
-    
+    ```
     # input file
     i = Separator(input_file='split/m001.JPG')
-    # output (3 Ã— 3)separated files.
+    # output (3 × 3)separated files.
     i.separate(3, 3,out_file=os.path.join("split", "splitted", "m_file_{:010}.png"))
+    ```
 
 ## Install
 
@@ -31,7 +36,7 @@ require following libraries.
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[MIT]
 
 ## Author
 
