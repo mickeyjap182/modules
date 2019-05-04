@@ -13,6 +13,8 @@ image libraries
 ## Requirement
 require following libraries.
 - opencv
+- numpy
+- matplotlib
 
 ## Usage
 - append module path to your system path.

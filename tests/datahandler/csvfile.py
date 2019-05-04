@@ -37,7 +37,17 @@ class TestCsv(unittest.TestCase):
             [2,'C_002', "Banana"],
             [3,'C_002', "Cytras"],
         ]
-        ret = c.write(os.path.join(self.out_path, 'has_header.csv'), contents, headers=headers)
+        file_path = os.path.join(self.out_path, 'has_header.csv')
+        ret = c.write(file_path, contents, headers=headers)
+
+        contents_add = [
+            [4,'C_003', "Donuts"],
+        ]
+        ret = c.write(file_path, contents_add, headers=headers)
+        rows = c.read(file_path, headers=headers)
+        # print(contents)
+        self.assertEqual(4,len(rows))
+
         # print(contents)
         self.assertTrue(ret)
 

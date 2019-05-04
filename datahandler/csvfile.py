@@ -48,14 +48,15 @@ class Csv():
 
     def write(self, file_path, contents, headers=None):
         """ write file """
-        with open(file_path, 'w', newline=self.form.line_sep) as csv_file:
+        is_addtional = os.path.isfile(file_path)
+        with open(file_path, 'a', newline=self.form.line_sep) as csv_file:
             writer = csv.writer(
                 csv_file,
                 delimiter=self.form.delimiter,
                 quotechar=self.form.quotechar,
                 quoting=csv.QUOTE_MINIMAL
             )
-            if headers is not None:
+            if headers is not None and not is_addtional:
                 writer.writerow(headers)
             for content in contents:
                 writer.writerow(content)
