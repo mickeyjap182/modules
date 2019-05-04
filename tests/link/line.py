@@ -22,7 +22,7 @@ class TestLine(unittest.TestCase):
         # input file
         token = "xxx"
         s = Subscriber(token)
-        # s.send("test", os.path.join(self.img_path, 'sample.png'))
+        # s.send("Today's alert", os.path.join(self.img_path, 'line_plot.png'))
         self.assertTrue(True)
 
 if __name__ == '__main__':

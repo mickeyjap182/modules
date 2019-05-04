@@ -61,9 +61,6 @@ class Csv():
                 writer.writerow(content)
         return True
 
-
-
-
     def read(self, file_path, headers=None):
         """ read file """
         contents = []
