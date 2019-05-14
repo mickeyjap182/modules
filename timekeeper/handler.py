@@ -16,12 +16,10 @@ class StopWatch():
     def stop(self):
         self.last = time.perf_counter()
         return self.last
-    def elapsed(self, comma=None):
-        # print(self.start)
-        # print(self.last)
-        if comma is None:
-            return math.floor(self.last - self.start)
-        return math.floor(self.last - self.start)
+    def elapsed(self, rounded=None):
+        if rounded is None:
+            return round(self.last - self.start)
+        return round(self.last - self.start, rounded)
 
 class Traveler():
     def __init__(self, *args, **kwargs):

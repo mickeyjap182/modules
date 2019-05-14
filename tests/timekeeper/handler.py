@@ -13,15 +13,16 @@ class TestArtisan(unittest.TestCase):
     def test_time_change(self):
         artisan = Artisan.create(Traveler)
         self.assertEqual('Traveler', type(artisan).__name__)
-        print(artisan.yesterday())
+        artisan.yesterday()
+        self.assertTrue(True)
 
     def test_stopwatch(self):
         artisan = Artisan.create(StopWatch)
         self.assertEqual('StopWatch', type(artisan).__name__)
         time.sleep(2)
         artisan.stop()
-        print(artisan.elapsed())
-        print(artisan.elapsed(3))
+        self.assertEqual(2, artisan.elapsed())
+        self.assertEqual(5, len(str(artisan.elapsed(3)))) #2.xxx
 
 if __name__ == '__main__':
     if module_path not in sys.path:
