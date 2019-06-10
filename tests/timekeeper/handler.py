@@ -16,7 +16,7 @@ class TestArtisan(unittest.TestCase):
         artisan.yesterday()
         self.assertTrue(True)
 
-    def test_stopwatch(self):
+    def test_from_stopwatch(self):
         artisan = Artisan.create(StopWatch)
         self.assertEqual('StopWatch', type(artisan).__name__)
         time.sleep(2)
