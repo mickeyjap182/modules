@@ -17,6 +17,7 @@ require following libraries.
 - matplotlib
 
 ## Usage
+
 - append module path to your system path.
  use `sys.path.append()` or
  add environment variable of `PYTHONPATH`
@@ -28,11 +29,17 @@ require following libraries.
     ```
     # input file
     i = Separator(input_file='split/m001.JPG')
-    # output (3 × 3)separated files.
+    # output (3 x 3)separated files.
     i.separate(3, 3,out_file=os.path.join("split", "splitted", "m_file_{:010}.png"))
     ```
 
 ## Install
+- install Anaconda.
+- make install pip libraries using Anaconda from `environment.yml` .
+`conda env create --file environment.yml`
+
+- if you update libries to use and export.
+`conda env export > environment.lock.yml`
 
 ## Contribution
 
