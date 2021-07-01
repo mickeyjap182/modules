@@ -34,9 +34,10 @@ require following libraries.
     ```
 
 ## Install
-- install Anaconda.
+- install Anaconda or Miniconda. 
+This python version is `3.9` 
 - make install pip libraries using Anaconda from `environment.yml` .
-`conda env create --file environment.yml`
+`conda env create --file environment.lock.yml`
 
 - if you update libries to use and export.
 `conda env export > environment.lock.yml`
