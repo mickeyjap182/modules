@@ -16,7 +16,7 @@ class ProcessingTest(unittest.TestCase):
         self.assertEqual('tagger', pipelines[0][0]) # part of speech tagging
         self.assertEqual('parser', pipelines[1][0]) # dependency parsing as sequence labeling
         self.assertEqual('ner', pipelines[2][0])    # Named Entity Recognitio
-        self.assertEqual('CompoundSplitter', pipelines[3][0])
+        self.assertEqual('CompoundSplitter', pipelines[3][0]) # Named Entity Recognitio
 
     def test_analyze(self):
         p = Processing()
