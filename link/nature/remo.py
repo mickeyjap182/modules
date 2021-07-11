@@ -44,9 +44,11 @@ class WebClient():
         response = requests.get(WebClient.API_SERVER_URL + resource_path, headers=self.headers)
         response = json.loads(response.text)
         return response
+
     def post(self, *args, **kwargs):
         """ connect via HTTP POST Method   """
         pass
+
     METHOD = 'Method'
     VALID_METHODS = (get, post)
     API_SERVER_URL = 'https://api.nature.global'
