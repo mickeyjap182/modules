@@ -15,6 +15,7 @@ require following libraries.
 - opencv
 - numpy
 - matplotlib
+- cv2
 
 ## Usage
 
@@ -34,10 +35,11 @@ require following libraries.
     ```
 
 ## Install
-- install Anaconda or Miniconda. 
+- install Anaconda or Miniconda.
+- `conda update conda` 
 This python version is `3.9` 
-- make install pip libraries using Anaconda from `environment.yml` .
-`conda env create --file environment.lock.yml`
+- make install pip libraries using Anaconda from `environment.lock.yml` .
+`conda env create -f=environment.lock.yml`
 
 - if you update libries to use and export.
 `conda env export > environment.lock.yml`
