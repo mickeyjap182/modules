@@ -60,7 +60,7 @@ dependencies:
   - llvm-openmp
   - lz4-c
   - markupsafe
-  - murmurhash=1.0.5=py39h9fcab8e_0
+  - murmurhash
   - ncurses=6.2=h0a44026_1
   - nettle=3.6=hedd7734_0
   - numpy=1.21.0=py39h7eed0ac_0
@@ -113,5 +113,4 @@ dependencies:
     - sudachidict-core==20210608
     - sudachipy==0.5.2
     - thinc==7.4.5
-prefix: c:\tools\anaconda3\envs\mod
 

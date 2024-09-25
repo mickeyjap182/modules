@@ -1,0 +1,10 @@
+# install by pip. 
+name: mod
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python==3.12
+  - pip
+  - pip:
+    - -r requirements.txt

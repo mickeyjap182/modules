@@ -1,20 +1,21 @@
+
 import os, sys
 
-class Core():
-    """ core module of tests. """
-    test_path = None
-    module_path = None
+class Helper():
     # TODO: make them singleton.
     @classmethod
     def find_test_path(cls):
-        if cls.test_path is None:
-            cls.test_path = os.path.dirname(os.path.abspath(__file__))
-        return cls.test_path
+        return os.path.dirname(os.path.abspath(__file__))
+
     @classmethod
     def find_module_path(cls):
-        if cls.module_path is None:
-            cls.module_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        return cls.module_path
+        return  os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    @classmethod
+    def append_sys_path(cls, path):
+        if path not in sys.path:
+            sys.path.append(path)
 
-test_path = Core.find_test_path()
-module_path = Core.find_module_path()
+class Config():
+    """ config module of tests. """
+    test_path = Helper.find_test_path()
+    module_path = Helper.find_module_path()

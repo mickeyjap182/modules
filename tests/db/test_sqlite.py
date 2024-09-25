@@ -1,8 +1,17 @@
 import os, sys, unittest
 import json
 
-module_path  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-dbname = os.path.join(module_path, 'startnature.db') 
+# It is required when you'll run the unittest. 
+if __name__ == '__main__':
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    if path not in sys.path:
+        sys.path.append(path)
+
+from db.sqlite import *
+from db.base import *
+from tests.core import Config
+
+dbname = os.path.join(Config.module_path, 'startnature.db') 
 
 class TestSqlite(unittest.TestCase):
 
@@ -76,8 +85,4 @@ class TestSqlite(unittest.TestCase):
             pass
 
 if __name__ == '__main__':
-    if module_path not in sys.path:
-        sys.path.append(module_path)
-    from db.sqlite import *
-    from db.base import *
     unittest.main()

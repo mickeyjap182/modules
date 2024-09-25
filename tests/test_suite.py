@@ -1,9 +1,10 @@
 import os, sys, time, unittest
-from core import Core
+from core import Config
 
 def suite():
-    top_dir = os.path.dirname(Core.test_path)
-    tests = unittest.TestLoader().discover(start_dir=Core.test_path,
+    print(Config.test_path)
+    top_dir = os.path.dirname(Config.test_path)
+    tests = unittest.TestLoader().discover(start_dir=Config.test_path,
                                          pattern='test*.py',
                                          top_level_dir=top_dir)
     runner = unittest.TextTestRunner()

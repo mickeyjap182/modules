@@ -114,5 +114,5 @@ dependencies:
     - sudachidict-core==20210608
     - sudachipy==0.5.2
     - thinc==7.4.5
-prefix: /Users/yoshitaka.toyama/anaconda3/envs/mod
+prefix: c:\users\
 
