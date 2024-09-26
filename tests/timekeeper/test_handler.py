@@ -1,6 +1,17 @@
 import os, sys, time, unittest
 
-module_path  = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# It is required when you'll run the unittest. 
+if __name__ == '__main__':
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    if path not in sys.path:
+        sys.path.append(path)
+
+from timekeeper.handler import (
+    Artisan,
+    Traveler,
+    StopWatch,
+)
+
 
 class TestArtisan(unittest.TestCase):
 
@@ -25,11 +36,4 @@ class TestArtisan(unittest.TestCase):
         self.assertEqual(5, len(str(artisan.elapsed(3)))) #2.xxx
 
 if __name__ == '__main__':
-    if module_path not in sys.path:
-        sys.path.append(module_path)
-    from timekeeper.handler import (
-        Artisan,
-        Traveler,
-        StopWatch,
-    )
     unittest.main()
