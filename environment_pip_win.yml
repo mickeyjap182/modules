@@ -1,5 +1,5 @@
 # install by pip. 
-name: mod
+name: mod_v2
 channels:
   - conda-forge
   - pytorch
@@ -8,3 +8,7 @@ dependencies:
   - pip
   - pip:
     - -r requirements.txt
+platforms:
+  - win-64
+  - osx-arm64
+  - linux-64

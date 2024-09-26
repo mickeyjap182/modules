@@ -1,4 +1,3 @@
-from ginza import *
 import spacy
 
 class Processing():
@@ -7,7 +6,7 @@ class Processing():
         """
         
         """
-        lang = kwargs['lang'] if 'lang' in kwargs else Processing.DEFAULT_LANG 
+        lang = kwargs['lang'] if 'lang' in kwargs else Processing.DEFAULT_LANG
         self.nlp = spacy.load(lang) # Japanese lang model named GiNZA.
 
     def get_pipeline(self):

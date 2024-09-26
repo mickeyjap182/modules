@@ -1,5 +1,5 @@
 
-import os, sys
+import os, sys, platform
 
 class Helper():
     # TODO: make them singleton.
@@ -14,8 +14,15 @@ class Helper():
     def append_sys_path(cls, path):
         if path not in sys.path:
             sys.path.append(path)
+    @classmethod
+    def getOS(cls):
+        """ TODO : OSをもとに判定できるようにする """
+        return platform.platform()
+
 
 class Config():
     """ config module of tests. """
     test_path = Helper.find_test_path()
     module_path = Helper.find_module_path()
+    os = Helper.getOS()
+

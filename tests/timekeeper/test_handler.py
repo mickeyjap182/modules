@@ -30,7 +30,7 @@ class TestArtisan(unittest.TestCase):
     def test_from_stopwatch(self):
         artisan = Artisan.create(StopWatch)
         self.assertEqual('StopWatch', type(artisan).__name__)
-        time.sleep(2)
+        time.sleep(2.001)
         artisan.stop()
         self.assertEqual(2, artisan.elapsed())
         self.assertEqual(5, len(str(artisan.elapsed(3)))) #2.xxx

@@ -1,9 +1,12 @@
 import os, sys, time, unittest
+from platform import python_version
+
 from core import Config
 
 def suite():
-    print(Config.test_path)
-    top_dir = os.path.dirname(Config.test_path)
+    """ do all tests """
+    print(Config.os)
+    top_dir = Config.module_path
     tests = unittest.TestLoader().discover(start_dir=Config.test_path,
                                          pattern='test*.py',
                                          top_level_dir=top_dir)
