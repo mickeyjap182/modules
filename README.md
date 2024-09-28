@@ -16,8 +16,6 @@ require following libraries.
 - numpy
 - matplotlib
 - cv2
-- ginza 
-- ja_ginza
 
 ## Usage
 
@@ -36,58 +34,69 @@ require following libraries.
     i.separate(3, 3,out_file=os.path.join("split", "splitted", "m_file_{:010}.png"))
     ```
 
-## Install
+## Install & initial setup
 - install Anaconda or Miniconda.
 `conda update conda` 
 - change chanels
 ```
  conda config --append channels conda-forge 
- conda config --append channels pytorch
  conda config --remove channels defaults
  conda config --get channels
 ```
 - This python version is `3.12` 
 - make install pip libraries using Anaconda from `environment.lock.yml` .
+
+## import an environment.
 `conda env create -f=environment.lock.yml`
+conda env create -f=environment.yml
 
 - or use pip with conda.
 `conda env create -f=environment_pip_win.yml`
+`conda create -n=mod_v2 -f=environment_pip_win.yml
 
 - or other tool.
+
 `pip install -r requirements_win.txt`
 
+
+## conda env export
+### conda
 - if you update libries to use and export.
-`conda env export > environment.lock.yml`
+`conda env export -n=mod > environment.tmp.yml`
+
+- use convert shell
+`./convertforlock.sh <input file> <output file>`
+`./convertforlock.sh environment.tmp.yml environment.lock.yml`
+
+### pip ribrary
+- if you export as pip
+`conda list --export > requirements.tmp.txt`
+
+- use convert shell
+`./convertforlock.sh <input file> <output file>`
+`./convertforlock.sh requirements.tmp.txt requirements_pip_win.txt`
+
+(DEPRECATED)
 - if you update libries to use and export.
 `pip freeze > requirements_win.txt`
- 
+
+## remove conda environment
 - remove environment
 ```
 conda env remove -n=mod_v2
 ```
+## create new env 
 - install log.(WIP)
 ```
-conda install -c conda-forge opencv -y
+conda create python=3.12 -n mod  -y
+conda activate mod
+python --verison
+conda install conda-forge::opencv -y
 conda install conda-forge::matplotlib -y
-pip install -U ginza ja_ginza
+conda install conda-forge::requests -y
+conda install conda-forge::pandas -y
+conda install conda-forge::pytorch -y
 
-Preparing transaction: done
-Verifying transaction: done
-Executing transaction: done
-Installing pip dependencies: \ Ran pip subprocess with arguments:
-['C:\\Users\\yoshi\\anaconda3\\envs\\mod_v2\\python.exe', '-m', 'pip', 'install', '-U', '-r', 'C:\\workspace\\modules\\]
-Pip subprocess output:
-Collecting annotated-types==0.7.0 (from -r C:\workspace\modules\requirements.txt (line 1))
-  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
-Collecting blis==0.7.11 (from -r C:\workspace\modules\requirements.txt (line 2))
-  Using cached blis-0.7.11-cp312-cp312-win_amd64.whl.metadata (7.6 kB)
-Collecting catalogue==2.0.10 (from -r C:\workspace\modules\requirements.txt (line 3))
-  Using cached catalogue-2.0.10-py3-none-any.whl.metadata (14 kB)
-
-Pip subprocess error:
-ERROR: Ignored the following yanked versions: 2022.5.18
-ERROR: Could not find a version that satisfies the requirement certifi==1.1.1 (from versions: 0.0.1, 0.0.2, 0.0.3, 0.0.)
-ERROR: No matching distribution found for certifi==1.1.1
  
 ``` 
 
