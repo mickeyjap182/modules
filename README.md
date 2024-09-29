@@ -36,7 +36,8 @@ require following libraries.
 
 ## Install & initial setup
 - install Anaconda or Miniconda.
-`conda update conda` 
+`conda update conda`
+
 - change chanels
 ```
  conda config --append channels conda-forge 
@@ -48,16 +49,9 @@ require following libraries.
 
 ## import an environment.
 `conda env create -f=environment.lock.yml`
-conda env create -f=environment.yml
 
-- or use pip with conda.
-`conda env create -f=environment_pip_win.yml`
-`conda create -n=mod_v2 -f=environment_pip_win.yml
-
-- or other tool.
-
-`pip install -r requirements_win.txt`
-
+- or pip tool.
+`pip install -r requirements_pip_win.txt`
 
 ## conda env export
 ### conda
@@ -86,7 +80,7 @@ conda env create -f=environment.yml
 conda env remove -n=mod_v2
 ```
 ## create new env 
-- install log.(WIP)
+- install library
 ```
 conda create python=3.12 -n mod  -y
 conda activate mod
@@ -97,7 +91,6 @@ conda install conda-forge::requests -y
 conda install conda-forge::pandas -y
 conda install conda-forge::pytorch -y
 
- 
 ``` 
 
 ## Contribution

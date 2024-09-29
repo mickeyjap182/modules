@@ -32,12 +32,7 @@ function output_yml() {
     echo "if you have these files, there will be overwritten."
     input_yesno
     # remove library suffix.
-    #cat $1 | sed -E "s/^[ -]+([-_.\+a-zA-Z0-9]+[\=]?[-_.+a-zA-Z0-9]+)\=?[\=_.+a-zA-Z0-9]+$/  - \1/" | sed -e '$d' > $1
-    cat $1 | sed -E "s/^[ -]+([-_\.\+a-zA-Z0-9]+[=$\n\r\f]{1}[-!_\.\+a-zA-Z0-9]*)[ =]?[\=_\.\+a-zA-Z0-9]+$/  -- \1/" | sed -e '$d' > $2
-#    cat $1 | sed -E "s/^[ -]+([-_.\+a-zA-Z0-9]+[\=$\n\r\f\]?[\!-_.+a-zA-Z0-9]*)[ \=]*[\=_.+a-zA-Z0-9]*$/  - \1/" > $2
-    # remove unnecessary last line.
-    # add library
-#    echo "  - python=3.12" >> $2
+    cat $1 | sed -E "s/^[ -]+([-_\.\+a-zA-Z0-9]+[=$\n\r\f]{1}[-!_\.\+a-zA-Z0-9]*)[$ =]?[=_\.\+a-zA-Z0-9]+$/  - \1/" | sed -e '$d' > $2
 }
 
 function output_txt() {
@@ -46,7 +41,6 @@ function output_txt() {
     input_yesno
     # remove library suffix.
     cat $1 | sed -E "s/^([-_.\+a-zA-Z0-9]+[\=$\n\r\f\]?[\!-_.+a-zA-Z0-9]*)[ =]+[\=_.+a-zA-Z0-9]+$/\1/" > $2
-    # add library
 }
 
 # start main process
@@ -104,10 +98,3 @@ do
 done
 
 echo "done."
-
-# replace package detail.
-#cat ${input} | sed -E "s/^[ -]+([-_.\+a-zA-Z0-9]+[\=]?[-_.+a-zA-Z0-9]+)\=?[\=_.+a-zA-Z0-9]+$/  - \1/" | sed -e '$d' > ${output}
-#cat ${input_file} | sed -E ${format} > ${output_file}
-#
-#cat ${input_file} sed -e '$d' > ${output_file}
-#echo "  - python=3.12" >> ${output_file}
