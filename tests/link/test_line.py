@@ -1,11 +1,18 @@
 import os, sys, unittest
 
-module_path  = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# It is required when you'll run the unittest.
+if __name__ == '__main__':
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    if path not in sys.path:
+        sys.path.append(path)
+
+from tests.core import Config
+from link.line import Subscriber
 
 class TestLine(unittest.TestCase):
 
     def setUp(self):
-        self.img_path = os.path.join(module_path, 'tests', 'image', 'input')
+        self.img_path = os.path.join(Config.module_path, 'tests', 'image', 'input')
         pass
 
     def tearDown(self):
@@ -26,7 +33,4 @@ class TestLine(unittest.TestCase):
         self.assertTrue(True)
 
 if __name__ == '__main__':
-    if module_path not in sys.path:
-        sys.path.append(module_path)
-    from link.line import Subscriber
     unittest.main()

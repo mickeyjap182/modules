@@ -1,12 +1,19 @@
 import os, sys, unittest
 
-module_path  = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# It is required when you'll run the unittest. 
+if __name__ == '__main__':
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    if path not in sys.path:
+        sys.path.append(path)
+
+from tests.core import Config
+from datahandler.csvfile import Formatter, Csv
 
 class TestCsv(unittest.TestCase):
 
     def setUp(self):
-        self.in_path = os.path.join(module_path, 'tests', 'datahandler', 'input')
-        self.out_path = os.path.join(module_path, 'tests', 'datahandler', 'output')
+        self.in_path = os.path.join(Config.module_path, 'tests', 'datahandler', 'input')
+        self.out_path = os.path.join(Config.module_path, 'tests', 'datahandler', 'output')
         out_files = self._output_files()
         ret = [os.remove(file) for file in out_files]
 
@@ -55,7 +62,4 @@ class TestCsv(unittest.TestCase):
         return [os.path.join(self.out_path, name) for name in os.listdir(self.out_path) if os.path.isfile(os.path.join(self.out_path, name)) and name != '.gitkeep']
 
 if __name__ == '__main__':
-    if module_path not in sys.path:
-        sys.path.append(module_path)
-    from datahandler.csvfile import Formatter, Csv
     unittest.main()
