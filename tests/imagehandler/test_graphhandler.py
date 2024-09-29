@@ -26,7 +26,7 @@ class TestGraph(unittest.TestCase):
         height = [22,  20,  18,  19,  20,  14,  15.2,16.2,18.3, 19.9, 21.1, 20.8, 21.6, 22.2, 23.1, 21.2, 20.4, 19.9, 18.9, 18.2, 17.9, 17.7, 17.8, 18.0]
         b_high = [60,  70,  90,  88,  75,  67,  67,  78,  46,   78,   46,   57,   74,   68,   69,   62,   87,   68,   89,   57,   54,  65,  76,   65]
 
-        # create multipul graph
+        # create multiple graph
         graph = Graph()
         save_path = os.path.join(self.out_path, 'line_plot.pdf')
         graph.draw(Bar(y_label="humi"), left, b_high, color="royalblue")
