@@ -29,19 +29,18 @@ class SimpleRegressionTest(unittest.TestCase):
 
         """
 
-        input = os.path.join(Config.test_path, 'ml', 'input', 'boston.csv')
-        df = pd.read_csv(input)
-        print(df)
-        print(df.shape)
-        print(df.dtypes)
-        print(df.isnull)
-        rm = df.filter(items=['RM'])
-        age = df.filter(items=['AGE'])
-        # TODO 描画に気を付ける
-        plt.scatter(rm, age)
-        plt.savefig("sample.png")
+        input_file = os.path.join(Config.test_path, 'ml', 'input', 'boston.csv')
+        output = os.path.join(Config.test_path, 'ml', 'output')
+
+        df = pd.read_csv(input_file, sep='\s+')
+
+        rm = df['RM'].to_list()
+        age = df['AGE'].to_list()
+        # 散布図の描画
+        self.BostonDataset.scatter_plot(rm, age, os.path.join(output, "simple_regression.png"))
 
 
+        # 単回帰
         model = Simple(df)
         model.run()
         self.assertTrue(True)
@@ -80,13 +79,14 @@ class SimpleRegressionTest(unittest.TestCase):
         """
         def __init__(self):
             pass
+        @staticmethod
+        def scatter_plot(x: list, y:list, graph_path:str ) -> None:
+            plt.scatter(x, y)
+            plt.savefig(graph_path)
 
         @staticmethod
         def filter_simple(dataset: pd) -> pd:
             return dataset.filter(items="RM")
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
