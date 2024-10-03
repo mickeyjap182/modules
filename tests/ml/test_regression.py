@@ -1,4 +1,6 @@
 import os, sys, time, unittest
+
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -32,17 +34,29 @@ class SimpleRegressionTest(unittest.TestCase):
         input_file = os.path.join(Config.test_path, 'ml', 'input', 'boston.csv')
         output = os.path.join(Config.test_path, 'ml', 'output')
 
-        df = pd.read_csv(input_file, sep='\s+')
+        dataset = pd.read_csv(input_file, sep='\s+')
 
-        rm = df['RM'].to_list()
-        age = df['AGE'].to_list()
+        # 前処理
+        df = self.BostonDataset.filter_simple(dataset)
+        """
+        LSTAT    労働者階級の割合
+        MEDV     所有者居住住宅の中央値（1000ドル単位）
+        """
+        df = df.filter(['LSTAT','MEDV'])
+
+        print(df.shape)
+        # 入力データ数
+        N = df.shape[0]
+        # 入力データの引数の数
+        I = df.shape[1]
+        lstat = df['LSTAT'].to_list()
+        medv = df['MEDV'].to_list()
         # 散布図の描画
-        self.BostonDataset.scatter_plot(rm, age, os.path.join(output, "simple_regression.png"))
-
-
+        self.BostonDataset.scatter_plot(lstat, medv, os.path.join(output, "simple_regression.png"))
+        w = np.ones(2)
         # 単回帰
-        model = Simple(df)
-        model.run()
+        model = Simple(N, 1000, 0.02)
+        model.run(w, lstat, medv)
         self.assertTrue(True)
 
     class BostonDataset():
@@ -79,14 +93,17 @@ class SimpleRegressionTest(unittest.TestCase):
         """
         def __init__(self):
             pass
+
         @staticmethod
         def scatter_plot(x: list, y:list, graph_path:str ) -> None:
             plt.scatter(x, y)
             plt.savefig(graph_path)
 
         @staticmethod
-        def filter_simple(dataset: pd) -> pd:
-            return dataset.filter(items="RM")
+        def filter_simple(dataset: pd.DataFrame) -> pd.DataFrame:
+            """ 前処理サンプル """
+            df = dataset.query("ZN >= 0.20 & ZN <= 95.00")
+            return df
 
 if __name__ == '__main__':
     unittest.main()
